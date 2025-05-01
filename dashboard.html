@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATM Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="dashboard">
+    <h2>ATM Dashboard</h2>
+    <p>Welcome, <span id="userName"></span> (PIN: <span id="userPin"></span>)</p>
+
+    <p>Balance: ₹<span id="balance">0</span></p>
+
+    <input type="number" id="amount" placeholder="Enter amount">
+    <div style="margin: 10px 0;">
+      <button onclick="deposit()">Deposit</button>
+      <button onclick="withdraw()">Withdraw</button>
+    </div>
+
+    <button onclick="viewHistory()">View Transaction History</button>
+    <button onclick="logout()">Logout</button>
+
+    <div id="history"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
