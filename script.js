@@ -194,6 +194,34 @@ function viewHistory() {
       }
     });
 }
+function loadBalance() {
+  const pin = localStorage.getItem("userPin");
+
+  if (!pin) {
+    alert("User not authenticated.");
+    return;
+  }
+
+  fetch(`${BASE_URL}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ pin })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") {
+        const balSpan = document.getElementById("balance");
+        if (balSpan) {
+          balSpan.innerText = data.balance.toFixed(2);
+        }
+      } else {
+        alert("Failed to fetch balance. Session might be invalid.");
+      }
+    })
+    .catch(() => {
+      alert("Failed to connect to server while updating balance.");
+    });
+}
 
 function logout() {
   localStorage.clear();
